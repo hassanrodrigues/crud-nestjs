@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 
 @Controller('produtos')
 export class ProdutosController {
@@ -14,5 +14,13 @@ export class ProdutosController {
     @Post()
     criarProduto(@Body() produto): string {
         return `Produto criado ${produto.nome}`
+    }
+    @Put()
+    atualizarProduto(@Body() produto): string {
+        return `Produto atualziado`
+    }
+    @Delete(':id')
+    apagar(@Param() params): string {
+        return ` produto exlcuido ${params.id}`
     }
 }

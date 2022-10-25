@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
-import { Injectable } from '@nestjs/common';
+import { Injectable,BadRequestException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { NotFoundError } from 'rxjs';
+import { Not } from 'sequelize-typescript';
 import { Livro } from './livro.model';
 
 @Injectable()
@@ -16,8 +18,19 @@ export class LivrosService {
 
 
     async obterUm(id: number): Promise<Livro> {
+        const livroExistente = await this.livroModel.findOne({
+            where: {
+                id: id
+            }
+        });
+        if (!livroExistente) {
+            console.log('livro não encontrado');
+            throw new BadRequestException({
+                message: 'Livro não encontrado',
+            });
+        }
 
-        return this.livroModel.findByPk(id);
+        return livroExistente
     }
 
     async criar(livro: Livro) {
@@ -26,6 +39,18 @@ export class LivrosService {
     }
 
     async alterar(livro: Livro): Promise<[number, Livro[]]> {
+        
+        const livroExistente = await this.livroModel.findOne({
+            where: {
+                id: livro.id
+            }
+        });
+        if (!livroExistente) {
+            console.log('livro não encontrado');
+            throw new BadRequestException({
+                message: 'Livro não encontrado',
+            });
+        }
         return this.livroModel.update(livro, {
             returning: true,
             where: {

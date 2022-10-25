@@ -3,10 +3,11 @@ import { LivrosController } from './livro/Livros.controller';
 import { Module } from '@nestjs/common';
 import { AppController } from './hello/app.controller';
 import { AppService } from './hello/app.service';
-import { Sequelize } from 'sequelize-typescript';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Livro } from './livro/livro.model';
 import { ConfigModule } from '@nestjs/config';
+import { UsersModule } from './users/users.module';
+
 
 @Module({
   imports: [
@@ -21,7 +22,9 @@ import { ConfigModule } from '@nestjs/config';
       autoLoadModels: true,
       synchronize: true,
     }),
-    SequelizeModule.forFeature([Livro])
+    SequelizeModule.forFeature([Livro]),
+    UsersModule,
+
   ],
   controllers: [
     LivrosController, AppController],

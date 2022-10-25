@@ -1,11 +1,11 @@
-import { LivrosService } from './livro.service';
-import { LivrosController } from './Livros.controller';
+import { LivrosService } from './livro/livro.service';
+import { LivrosController } from './livro/Livros.controller';
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AppController } from './hello/app.controller';
+import { AppService } from './hello/app.service';
 import { Sequelize } from 'sequelize-typescript';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { Livro } from './Livro.model';
+import { Livro } from './livro/livro.model';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({

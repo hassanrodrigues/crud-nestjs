@@ -21,6 +21,7 @@ import { UsersModule } from './users/users.module';
       database: 'livraria',
       autoLoadModels: true,
       synchronize: true,
+      logging:true
     }),
     SequelizeModule.forFeature([Livro]),
     UsersModule,

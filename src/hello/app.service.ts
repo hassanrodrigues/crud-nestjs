@@ -2,8 +2,10 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
+  async getHello(): Promise<string> {
+
     return 'Hello World!';
+    
   }
    async postHello(name:string): Promise<string> {
    
@@ -11,5 +13,4 @@ export class AppService {
 
       return `Hello ${nome1[0]}!`;
   }
-  
 }

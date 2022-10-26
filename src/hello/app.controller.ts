@@ -6,13 +6,16 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get("/hello")
-  getHello(): string {
+   async getHello(): Promise<string> {
+
     return this.appService.getHello();
+  
   }
 
   @Post("/hello")
- async postHello(@Body() name: string): Promise<string> {
-    return this.appService.postHello(name);
-  }
+   async postHello(@Body() name: string): Promise<string> {
   
+    return this.appService.postHello(name);
+     
+  }
 }

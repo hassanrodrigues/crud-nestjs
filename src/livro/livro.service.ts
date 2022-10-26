@@ -1,8 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Injectable,BadRequestException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { NotFoundError } from 'rxjs';
-import { Not } from 'sequelize-typescript';
 import { Livro } from './livro.model';
 
 @Injectable()

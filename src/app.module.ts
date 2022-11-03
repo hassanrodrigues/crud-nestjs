@@ -8,7 +8,6 @@ import { Livro } from './livro/livro.model';
 import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 
-
 @Module({
   imports: [
     ConfigModule.forRoot(),
